@@ -3,3 +3,8 @@
 # per use-case. The code below should not be copied directly but referenced in order
 # to build your own root module that invokes this module
 #####################################################################################
+
+module "oss" {
+  source = "../.." # local example
+  create_oss_index = true
+}
