@@ -10,6 +10,7 @@ This module creates an Amazon OpenSearch Serverless collection configured for VE
 ## Access Control
 
 Access to the collection is secured through:
+
 - IAM-based authentication
 - Data access policies
 - Network policies
