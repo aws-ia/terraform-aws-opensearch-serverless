@@ -6,5 +6,4 @@
 
 module "oss" {
   source = "../.." # local example
-  create_oss_index = true
 }

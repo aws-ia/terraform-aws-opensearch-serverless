@@ -1,4 +1,6 @@
 <!-- BEGIN_TF_DOCS -->
+This example creates a vector collection, secured by access control policies.
+
 ## Requirements
 
 | Name | Version |
