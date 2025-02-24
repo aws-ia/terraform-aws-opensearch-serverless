@@ -109,7 +109,7 @@ resource "aws_opensearchserverless_access_policy" "data_policy" {
 # OpenSearch index
 
 resource "time_sleep" "wait_before_index_creation" {
-  count           = var.create_oss_index ? 1 : 0
+  count           = var.create_vector_index ? 1 : 0
   depends_on      = [aws_opensearchserverless_access_policy.data_policy]
   create_duration = "60s" # Wait for 60 seconds before creating the index
 }

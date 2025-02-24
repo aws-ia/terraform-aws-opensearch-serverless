@@ -71,4 +71,5 @@ No modules.
 |------|-------------|
 | <a name="output_opensearch_serverless_collection"></a> [opensearch\_serverless\_collection](#output\_opensearch\_serverless\_collection) | Opensearch collection value. |
 | <a name="output_opensearch_serverless_data_policy"></a> [opensearch\_serverless\_data\_policy](#output\_opensearch\_serverless\_data\_policy) | Opensearch serverless data policy value. |
+| <a name="output_vector_index"></a> [vector\_index](#output\_vector\_index) | Opensearch vector index value. |
 <!-- END_TF_DOCS -->
