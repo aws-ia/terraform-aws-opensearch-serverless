@@ -1,5 +1,5 @@
 <!-- BEGIN_TF_DOCS -->
-# Terraform OpenSearch Module
+# Terraform OpenSearch Serverless Module
 
 This module creates an Amazon OpenSearch Serverless collection optimized for vector search operations. OpenSearch Serverless automatically provisions and scales the underlying resources to deliver fast data ingestion and millisecond query response times.
 
