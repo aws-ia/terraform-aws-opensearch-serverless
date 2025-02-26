@@ -64,7 +64,9 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_create_vector_index"></a> [create\_vector\_index](#input\_create\_vector\_index) | Whether or not to create vector index. | `bool` | `false` | no |
 | <a name="input_index_knn_algo_param_ef_search"></a> [index\_knn\_algo\_param\_ef\_search](#input\_index\_knn\_algo\_param\_ef\_search) | The size of the dynamic list used during k-NN searches. Higher values lead to more accurate but slower searches. | `string` | `"512"` | no |
-| <a name="input_vector_index_mappings"></a> [vector\_index\_mappings](#input\_vector\_index\_mappings) | A JSON string defining how documents in the index, and the fields they contain, are stored and indexed. To avoid the complexities of field mapping updates, updates of this field are not allowed via this provider. | `string` | `"{\n  \"properties\": {\n    \"bedrock-knowledge-base-default-vector\": {\n      \"type\": \"knn_vector\",\n      \"dimension\": 1536,\n      \"method\": {\n        \"name\": \"hnsw\",\n        \"engine\": \"faiss\",\n        \"parameters\": {\n          \"m\": 16,\n          \"ef_construction\": 512\n        },\n        \"space_type\": \"l2\"\n      }\n    },\n    \"AMAZON_BEDROCK_METADATA\": {\n      \"type\": \"text\",\n      \"index\": \"false\"\n    },\n    \"AMAZON_BEDROCK_TEXT_CHUNK\": {\n      \"type\": \"text\",\n      \"index\": \"true\"\n    }\n  }\n}\n"` | no |
+| <a name="input_number_of_replicas"></a> [number\_of\_replicas](#input\_number\_of\_replicas) | The number of replica shards. | `string` | `"0"` | no |
+| <a name="input_number_of_shards"></a> [number\_of\_shards](#input\_number\_of\_shards) | The number of shards for the index. This setting cannot be changed after index creation. | `string` | `"2"` | no |
+| <a name="input_vector_index_mappings"></a> [vector\_index\_mappings](#input\_vector\_index\_mappings) | A JSON string defining how documents in the index, and the fields they contain, are stored and indexed. To avoid the complexities of field mapping updates, updates of this field are not allowed via this provider. | `string` | `null` | no |
 
 ## Outputs
 

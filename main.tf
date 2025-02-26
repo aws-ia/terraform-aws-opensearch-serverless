@@ -117,8 +117,8 @@ resource "time_sleep" "wait_before_index_creation" {
 resource "opensearch_index" "vector_index" {
   count                          = var.create_vector_index ? 1 : 0
   name                           = "os-vector-index-${random_string.solution_suffix.result}"
-  number_of_shards               = "2"
-  number_of_replicas             = "0"
+  number_of_shards               = var.number_of_shards
+  number_of_replicas             = var.number_of_replicas
   index_knn                      = true
   index_knn_algo_param_ef_search = var.index_knn_algo_param_ef_search
   mappings                       = var.vector_index_mappings
