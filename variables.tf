@@ -15,13 +15,13 @@ variable "index_knn_algo_param_ef_search" {
 variable "number_of_shards" {
     description = "The number of shards for the index. This setting cannot be changed after index creation."
     type        = string
-    default     = "2"
+    default     = "1"
 }
 
 variable "number_of_replicas" {
    description = "The number of replica shards." 
    type        = string
-   default     = "0"
+   default     = "1"
 
 }
 
