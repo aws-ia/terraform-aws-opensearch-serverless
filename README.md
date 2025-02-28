@@ -62,6 +62,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_collection_tags"></a> [collection\_tags](#input\_collection\_tags) | Tags to apply to the OpenSearch collection. | <pre>list(Object({<br>        key   = string<br>        value = string<br>    }))</pre> | `[]` | no |
 | <a name="input_create_vector_index"></a> [create\_vector\_index](#input\_create\_vector\_index) | Whether or not to create vector index. | `bool` | `false` | no |
 | <a name="input_index_knn_algo_param_ef_search"></a> [index\_knn\_algo\_param\_ef\_search](#input\_index\_knn\_algo\_param\_ef\_search) | The size of the dynamic list used during k-NN searches. Higher values lead to more accurate but slower searches. | `string` | `"512"` | no |
 | <a name="input_number_of_replicas"></a> [number\_of\_replicas](#input\_number\_of\_replicas) | The number of replica shards. | `string` | `"1"` | no |

@@ -17,6 +17,7 @@ resource "awscc_opensearchserverless_collection" "os_collection" {
     aws_opensearchserverless_security_policy.security_policy,
     aws_opensearchserverless_security_policy.nw_policy
   ]
+  tags = var.collection_tags
 }
 
 # Encryption Security Policy

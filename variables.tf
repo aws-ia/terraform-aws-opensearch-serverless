@@ -1,3 +1,14 @@
+# - OpenSearch Serverless Collection -
+
+variable "collection_tags" {
+    description = "Tags to apply to the OpenSearch collection."
+    type        = list(object({
+        key   = string
+        value = string
+    }))
+    default     = []
+}
+
 # – OpenSearch Serverless Index – 
 
 variable "create_vector_index" {
