@@ -62,8 +62,10 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_collection_tags"></a> [collection\_tags](#input\_collection\_tags) | Tags to apply to the OpenSearch collection. | <pre>list(Object({<br>        key   = string<br>        value = string<br>    }))</pre> | `[]` | no |
+| <a name="input_allow_public_access_network_policy"></a> [allow\_public\_access\_network\_policy](#input\_allow\_public\_access\_network\_policy) | Whether or not to allow public access to the OpenSearch collection endpoint and the Dashboards endpoint. | `bool` | `true` | no |
+| <a name="input_collection_tags"></a> [collection\_tags](#input\_collection\_tags) | Tags to apply to the OpenSearch collection. | <pre>list(object({<br>        key   = string<br>        value = string<br>    }))</pre> | `[]` | no |
 | <a name="input_create_vector_index"></a> [create\_vector\_index](#input\_create\_vector\_index) | Whether or not to create vector index. | `bool` | `false` | no |
+| <a name="input_force_destroy_vector_index"></a> [force\_destroy\_vector\_index](#input\_force\_destroy\_vector\_index) | Whether or not to force destroy the vector index. | `bool` | `true` | no |
 | <a name="input_index_knn_algo_param_ef_search"></a> [index\_knn\_algo\_param\_ef\_search](#input\_index\_knn\_algo\_param\_ef\_search) | The size of the dynamic list used during k-NN searches. Higher values lead to more accurate but slower searches. | `string` | `"512"` | no |
 | <a name="input_number_of_replicas"></a> [number\_of\_replicas](#input\_number\_of\_replicas) | The number of replica shards. | `string` | `"1"` | no |
 | <a name="input_number_of_shards"></a> [number\_of\_shards](#input\_number\_of\_shards) | The number of shards for the index. This setting cannot be changed after index creation. | `string` | `"1"` | no |

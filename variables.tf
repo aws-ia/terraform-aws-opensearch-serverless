@@ -9,6 +9,12 @@ variable "collection_tags" {
     default     = []
 }
 
+variable "allow_public_access_network_policy" {
+    description = "Whether or not to allow public access to the OpenSearch collection endpoint and the Dashboards endpoint."
+    type        = bool
+    default     = true
+}
+
 # – OpenSearch Serverless Index – 
 
 variable "create_vector_index" {
@@ -40,4 +46,10 @@ variable "vector_index_mappings" {
     description = " A JSON string defining how documents in the index, and the fields they contain, are stored and indexed. To avoid the complexities of field mapping updates, updates of this field are not allowed via this provider."
     type        = string
     default     = null
+}
+
+variable "force_destroy_vector_index" {
+   description = "Whether or not to force destroy the vector index."
+   type        = bool
+   default     = true
 }

@@ -15,7 +15,7 @@ resource "awscc_opensearchserverless_collection" "os_collection" {
   description = "OpenSearch collection created by Terraform."
   depends_on = [
     aws_opensearchserverless_security_policy.security_policy,
-    aws_opensearchserverless_security_policy.nw_policy
+    aws_opensearchserverless_security_policy.nw_policy[0]
   ]
   tags = var.collection_tags
 }
@@ -37,6 +37,7 @@ resource "aws_opensearchserverless_security_policy" "security_policy" {
 
 # Network policy
 resource "aws_opensearchserverless_security_policy" "nw_policy" {
+  count = var.allow_public_access_network_policy ? 1 : 0
   name  = "nw-policy-${random_string.solution_suffix.result}"
   type  = "network"
   policy = jsonencode([
@@ -123,6 +124,6 @@ resource "opensearch_index" "vector_index" {
   index_knn                      = true
   index_knn_algo_param_ef_search = var.index_knn_algo_param_ef_search
   mappings                       = var.vector_index_mappings
-  force_destroy                  = true
+  force_destroy                  = var.force_destroy_vector_index
   depends_on                     = [time_sleep.wait_before_index_creation[0], aws_opensearchserverless_access_policy.data_policy]
 }
