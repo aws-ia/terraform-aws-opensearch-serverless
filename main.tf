@@ -5,6 +5,9 @@ resource "random_string" "solution_suffix" {
 }
 
 data "aws_caller_identity" "current" {}
+data "aws_iam_session_context" "current" {
+  arn = data.aws_caller_identity.current.arn
+}
 
 # – OpenSearch Serverless –
 
@@ -102,7 +105,8 @@ resource "aws_opensearchserverless_access_policy" "data_policy" {
         }
       ],
       Principal = [
-        data.aws_caller_identity.current.arn
+        data.aws_caller_identity.current.arn,
+        data.aws_iam_session_context.current.issuer_arn
       ]
     }
   ])
