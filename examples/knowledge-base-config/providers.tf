@@ -39,6 +39,6 @@ provider "awscc" {
 }
 
 provider "opensearch" {
-  url         = module.oss.opensearch_serverless_collection.collection_endpoint 
+  url         = module.oss-for-knowledgebase.opensearch_serverless_collection.collection_endpoint 
   healthcheck = false
 }
