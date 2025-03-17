@@ -1,7 +1,7 @@
 module "oss-for-knowledgebase" {
     source = "../.." # local example
     create_vector_index = true
-    mappings = <<-EOF
+    vector_index_mappings = <<-EOF
         {
         "properties": {
             "bedrock-knowledge-base-default-vector": {
