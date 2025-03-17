@@ -1,3 +1,20 @@
+# - OpenSearch Serverless Collection -
+
+variable "collection_tags" {
+    description = "Tags to apply to the OpenSearch collection."
+    type        = list(object({
+        key   = string
+        value = string
+    }))
+    default     = []
+}
+
+variable "allow_public_access_network_policy" {
+    description = "Whether or not to allow public access to the OpenSearch collection endpoint and the Dashboards endpoint."
+    type        = bool
+    default     = true
+}
+
 # – OpenSearch Serverless Index – 
 
 variable "create_vector_index" {
@@ -12,34 +29,27 @@ variable "index_knn_algo_param_ef_search" {
     default     = "512"
 }
 
+variable "number_of_shards" {
+    description = "The number of shards for the index. This setting cannot be changed after index creation."
+    type        = string
+    default     = "1"
+}
+
+variable "number_of_replicas" {
+   description = "The number of replica shards." 
+   type        = string
+   default     = "1"
+
+}
+
 variable "vector_index_mappings" {
     description = " A JSON string defining how documents in the index, and the fields they contain, are stored and indexed. To avoid the complexities of field mapping updates, updates of this field are not allowed via this provider."
     type        = string
-    default     = <<-EOF
-    {
-      "properties": {
-        "bedrock-knowledge-base-default-vector": {
-          "type": "knn_vector",
-          "dimension": 1536,
-          "method": {
-            "name": "hnsw",
-            "engine": "faiss",
-            "parameters": {
-              "m": 16,
-              "ef_construction": 512
-            },
-            "space_type": "l2"
-          }
-        },
-        "AMAZON_BEDROCK_METADATA": {
-          "type": "text",
-          "index": "false"
-        },
-        "AMAZON_BEDROCK_TEXT_CHUNK": {
-          "type": "text",
-          "index": "true"
-        }
-      }
-    }
-  EOF
+    default     = null
+}
+
+variable "force_destroy_vector_index" {
+   description = "Whether or not to force destroy the vector index."
+   type        = bool
+   default     = true
 }

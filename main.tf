@@ -5,6 +5,9 @@ resource "random_string" "solution_suffix" {
 }
 
 data "aws_caller_identity" "current" {}
+data "aws_iam_session_context" "current" {
+  arn = data.aws_caller_identity.current.arn
+}
 
 # – OpenSearch Serverless –
 
@@ -15,8 +18,9 @@ resource "awscc_opensearchserverless_collection" "os_collection" {
   description = "OpenSearch collection created by Terraform."
   depends_on = [
     aws_opensearchserverless_security_policy.security_policy,
-    aws_opensearchserverless_security_policy.nw_policy
+    aws_opensearchserverless_security_policy.nw_policy[0]
   ]
+  tags = var.collection_tags
 }
 
 # Encryption Security Policy
@@ -36,6 +40,7 @@ resource "aws_opensearchserverless_security_policy" "security_policy" {
 
 # Network policy
 resource "aws_opensearchserverless_security_policy" "nw_policy" {
+  count = var.allow_public_access_network_policy ? 1 : 0
   name  = "nw-policy-${random_string.solution_suffix.result}"
   type  = "network"
   policy = jsonencode([
@@ -100,7 +105,8 @@ resource "aws_opensearchserverless_access_policy" "data_policy" {
         }
       ],
       Principal = [
-        data.aws_caller_identity.current.arn
+        data.aws_caller_identity.current.arn,
+        data.aws_iam_session_context.current.issuer_arn
       ]
     }
   ])
@@ -117,11 +123,11 @@ resource "time_sleep" "wait_before_index_creation" {
 resource "opensearch_index" "vector_index" {
   count                          = var.create_vector_index ? 1 : 0
   name                           = "os-vector-index-${random_string.solution_suffix.result}"
-  number_of_shards               = "2"
-  number_of_replicas             = "0"
+  number_of_shards               = var.number_of_shards
+  number_of_replicas             = var.number_of_replicas
   index_knn                      = true
   index_knn_algo_param_ef_search = var.index_knn_algo_param_ef_search
   mappings                       = var.vector_index_mappings
-  force_destroy                  = true
+  force_destroy                  = var.force_destroy_vector_index
   depends_on                     = [time_sleep.wait_before_index_creation[0], aws_opensearchserverless_access_policy.data_policy]
 }
