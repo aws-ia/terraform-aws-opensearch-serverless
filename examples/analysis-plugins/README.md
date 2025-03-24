@@ -1,5 +1,5 @@
 <!-- BEGIN_TF_DOCS -->
-This example creates a vector collection, secured by access control policies.
+This example creates a vector collection, secured by access control policies, and a vector index with analysis plugins.
 
 ## Requirements
 
@@ -20,7 +20,7 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_oss"></a> [oss](#module\_oss) | ../.. | n/a |
+| <a name="module_oss-for-knowledgebase"></a> [oss-for-knowledgebase](#module\_oss-for-knowledgebase) | ../.. | n/a |
 
 ## Resources
 
