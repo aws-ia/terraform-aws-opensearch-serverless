@@ -129,5 +129,10 @@ resource "opensearch_index" "vector_index" {
   index_knn_algo_param_ef_search = var.index_knn_algo_param_ef_search
   mappings                       = var.vector_index_mappings
   force_destroy                  = var.force_destroy_vector_index
+  analysis_analyzer              = var.analysis_analyzer
+  analysis_char_filter           = var.analysis_char_filter
+  analysis_filter                = var.analysis_filter 
+  analysis_normalizer            = var.analysis_normalizer
+  analysis_tokenizer             = var.analysis_tokenizer   
   depends_on                     = [time_sleep.wait_before_index_creation[0], aws_opensearchserverless_access_policy.data_policy]
 }

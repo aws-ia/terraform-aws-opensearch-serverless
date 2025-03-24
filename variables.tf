@@ -53,3 +53,35 @@ variable "force_destroy_vector_index" {
    type        = bool
    default     = true
 }
+
+# Analysis Plugins
+
+variable "analysis_analyzer" {
+    description = "A JSON string defining the analyzer applied to the index."
+    type        = string
+    default     = null
+}
+
+variable "analysis_char_filter" {
+    description = "A JSON string defining the char filter applied to the index."
+    type        = string
+    default     = null
+}
+
+variable "analysis_filter" {
+    description = "A JSON string defining the filters applied to the index."
+    type        = string
+    default     = null
+}
+
+variable "analysis_normalizer" {
+    description = "A JSON string defining the normalizers applied to the index."
+    type        = string
+    default     = null
+}
+
+variable "analysis_tokenizer" {
+    description = "A JSON string defining the tokenizer applied to the index."
+    type        = string
+    default     = null
+}
