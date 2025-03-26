@@ -64,6 +64,11 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_allow_public_access_network_policy"></a> [allow\_public\_access\_network\_policy](#input\_allow\_public\_access\_network\_policy) | Whether or not to allow public access to the OpenSearch collection endpoint and the Dashboards endpoint. | `bool` | `true` | no |
+| <a name="input_analysis_analyzer"></a> [analysis\_analyzer](#input\_analysis\_analyzer) | A JSON string defining the analyzer applied to the index. | `string` | `null` | no |
+| <a name="input_analysis_char_filter"></a> [analysis\_char\_filter](#input\_analysis\_char\_filter) | A JSON string defining the char filter applied to the index. | `string` | `null` | no |
+| <a name="input_analysis_filter"></a> [analysis\_filter](#input\_analysis\_filter) | A JSON string defining the filters applied to the index. | `string` | `null` | no |
+| <a name="input_analysis_normalizer"></a> [analysis\_normalizer](#input\_analysis\_normalizer) | A JSON string defining the normalizers applied to the index. | `string` | `null` | no |
+| <a name="input_analysis_tokenizer"></a> [analysis\_tokenizer](#input\_analysis\_tokenizer) | A JSON string defining the tokenizer applied to the index. | `string` | `null` | no |
 | <a name="input_collection_tags"></a> [collection\_tags](#input\_collection\_tags) | Tags to apply to the OpenSearch collection. | <pre>list(object({<br>        key   = string<br>        value = string<br>    }))</pre> | `[]` | no |
 | <a name="input_create_vector_index"></a> [create\_vector\_index](#input\_create\_vector\_index) | Whether or not to create vector index. | `bool` | `false` | no |
 | <a name="input_force_destroy_vector_index"></a> [force\_destroy\_vector\_index](#input\_force\_destroy\_vector\_index) | Whether or not to force destroy the vector index. | `bool` | `true` | no |
