@@ -135,4 +135,10 @@ resource "opensearch_index" "vector_index" {
   analysis_normalizer            = var.analysis_normalizer
   analysis_tokenizer             = var.analysis_tokenizer   
   depends_on                     = [time_sleep.wait_before_index_creation[0], aws_opensearchserverless_access_policy.data_policy]
+  lifecycle {
+    ignore_changes = [
+      number_of_shards,
+      number_of_replicas
+    ]
+  }
 }
