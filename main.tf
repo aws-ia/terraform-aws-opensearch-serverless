@@ -104,10 +104,10 @@ resource "aws_opensearchserverless_access_policy" "data_policy" {
           ]
         }
       ],
-      Principal = [
+      Principal = distinct([
         data.aws_caller_identity.current.arn,
         data.aws_iam_session_context.current.issuer_arn
-      ]
+      ])
     }
   ])
 }
