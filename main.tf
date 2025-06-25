@@ -9,6 +9,13 @@ data "aws_iam_session_context" "current" {
   arn = data.aws_caller_identity.current.arn
 }
 
+locals {
+  unique_principals = toset([
+    data.aws_caller_identity.current.arn,
+    data.aws_iam_session_context.current.issuer_arn
+  ])
+}
+
 # – OpenSearch Serverless –
 
 # Create a Collection
@@ -104,10 +111,7 @@ resource "aws_opensearchserverless_access_policy" "data_policy" {
           ]
         }
       ],
-      Principal = [
-        data.aws_caller_identity.current.arn,
-        data.aws_iam_session_context.current.issuer_arn
-      ]
+      Principal = local.unique_principals
     }
   ])
 }
